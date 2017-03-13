@@ -8,6 +8,6 @@ dependencies:
 
 test:
   override:
-    - docker build -t sameersbn/redis .
-    - docker run -d --name=redis -v /run/redis sameersbn/redis; sleep 10
-    - docker run --volumes-from=redis sameersbn/redis redis-cli -s /var/run/redis/redis.sock PING
+    - docker build -t phpbcom/docker-redis .
+    - docker run -d --name=redis -v /run/redis phpbcom/docker-redis; sleep 10
+    - docker run --volumes-from=redis phpbcom/docker-redis redis-cli -s /var/run/redis/redis.sock PING

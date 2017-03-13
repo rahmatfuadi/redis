@@ -1,6 +1,6 @@
-[![Circle CI](https://circleci.com/gh/sameersbn/docker-redis.svg?style=shield)](https://circleci.com/gh/sameersbn/docker-redis) [![Docker Repository on Quay.io](https://quay.io/repository/sameersbn/redis/status "Docker Repository on Quay.io")](https://quay.io/repository/sameersbn/redis)
+[![Circle CI](https://circleci.com/gh/sameersbn/docker-redis.svg?style=shield)](https://circleci.com/gh/sameersbn/docker-redis) [![Docker Repository on Quay.io](https://quay.io/repository/phpbcom/docker-redis/status "Docker Repository on Quay.io")](https://quay.io/repository/phpbcom/docker-redis)
 
-# sameersbn/redis
+# phpbcom/docker-redis
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -28,7 +28,6 @@ If you find this image useful here's how you can help:
 
 - Send a pull request with your awesome features and bug fixes
 - Help users resolve their [issues](../../issues?q=is%3Aopen+is%3Aissue).
-- Support the development of this image with a [donation](http://www.damagehead.com/donate/)
 
 ## Issues
 
@@ -46,18 +45,16 @@ If the above recommendations do not help then [report your issue](../../issues/n
 
 ## Installation
 
-Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/sameersbn/redis) and is the recommended method of installation.
-
-> **Note**: Builds are also available on [Quay.io](https://quay.io/repository/sameersbn/redis)
+Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/phpbcom/docker-redis) and is the recommended method of installation.
 
 ```bash
-docker pull sameersbn/redis:latest
+docker pull phpbcom/docker-redis:latest
 ```
 
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t sameersbn/redis github.com/sameersbn/docker-redis
+docker build -t phpbcom/docker-redis github.com/phpb-com/docker-redis
 ```
 
 ## Quickstart
@@ -68,7 +65,7 @@ Start Redis using:
 docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --volume /srv/docker/redis:/var/lib/redis \
-  sameersbn/redis:latest
+  phpbcom/docker-redis:latest
 ```
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
@@ -81,7 +78,7 @@ You can customize the launch command of Redis server by specifying arguments to 
 docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --volume /srv/docker/redis:/var/lib/redis \
-  sameersbn/redis:latest --appendonly yes
+  phpbcom/docker-redis:latest --appendonly yes
 ```
 
 Please refer to http://redis.io/topics/config for further details.
@@ -108,7 +105,7 @@ docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --env 'REDIS_PASSWORD=redispassword' \
   --volume /srv/docker/redis:/var/lib/redis \
-  sameersbn/redis:latest
+  phpbcom/docker-redis:latest
 ```
 
 Clients connecting to the Redis server will now have to authenticate themselves with the password `redispassword`.
@@ -123,7 +120,7 @@ By default the Redis server logs are sent to the standard output. Using the [Com
 docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --volume /srv/docker/redis:/var/lib/redis \
-  sameersbn/redis:latest --logfile /var/log/redis/redis-server.log
+  phpbcom/docker-redis:latest --logfile /var/log/redis/redis-server.log
 ```
 
 To access the Redis logs you can use `docker exec`. For example:
@@ -141,7 +138,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull sameersbn/redis:latest
+  docker pull phpbcom/docker-redis:latest
   ```
 
   2. Stop the currently running image:
@@ -161,7 +158,7 @@ To upgrade to newer releases:
   ```bash
   docker run --name redis -d \
     [OPTIONS] \
-    sameersbn/redis:latest
+    phpbcom/docker-redis:latest
   ```
 
 ## Shell Access
