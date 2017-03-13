@@ -1,3 +1,5 @@
+[![build status](https://gotfix.com/docker/redis/badges/master/build.svg)](https://gotfix.com/docker/redis/commits/master)
+
 # phpbcom/docker-redis
 
 **NOTE**: This project was forked from sameersbn/docker-redis to maintain slightly more modern and less conservative (i.e., things will break) version of the docker image.
