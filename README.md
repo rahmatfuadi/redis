@@ -1,6 +1,6 @@
-[![Circle CI](https://circleci.com/gh/sameersbn/docker-redis.svg?style=shield)](https://circleci.com/gh/sameersbn/docker-redis) [![Docker Repository on Quay.io](https://quay.io/repository/phpbcom/docker-redis/status "Docker Repository on Quay.io")](https://quay.io/repository/phpbcom/docker-redis)
-
 # phpbcom/docker-redis
+
+**NOTE**: This project was forked from sameersbn/docker-redis to maintain slightly more modern and less conservative (i.e., things will break) version of the docker image.
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
