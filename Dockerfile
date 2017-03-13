@@ -9,10 +9,8 @@ RUN echo 'APT::Install-Recommends 0;' >> /etc/apt/apt.conf.d/01norecommends \
  && echo 'APT::Install-Suggests 0;' >> /etc/apt/apt.conf.d/01norecommends \
  && apt-get update \
  && apt-get -yy upgrade \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y vim.tiny curl wget sudo net-tools ca-certificates unzip apt-transport-https \
- && rm -rf /var/lib/apt/lists/*
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y redis-server \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y vim.tiny curl wget \
+    sudo net-tools ca-certificates unzip apt-transport-https redis-server \
  && sed 's/^daemonize yes/daemonize no/' -i /etc/redis/redis.conf \
  && sed 's/^bind 127.0.0.1/bind 0.0.0.0/' -i /etc/redis/redis.conf \
  && sed 's/^# unixsocket /unixsocket /' -i /etc/redis/redis.conf \
