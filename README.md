@@ -4,6 +4,12 @@
 
 **NOTE**: This project was forked from sameersbn/docker-redis to maintain slightly more modern and less conservative (i.e., things will break) version of the docker image.
 
+## Canonical source
+
+The canonical source of the repository is [hosted on gotfix.com](https://gotfix.com/docker/redis).
+
+## Table of Content
+
 - [Introduction](#introduction)
   - [Contributing](#contributing)
   - [Issues](#issues)
