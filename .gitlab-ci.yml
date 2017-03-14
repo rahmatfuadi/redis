@@ -25,6 +25,7 @@ release:
     - docker pull "$CI_REGISTRY_IMAGE:$IMAGE_TAG"
     - docker tag "$CI_REGISTRY_IMAGE:$IMAGE_TAG" gotfix/redis
     - docker tag "$CI_REGISTRY_IMAGE:$IMAGE_TAG" gotfix/redis:latest
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - docker push gotfix/redis
     - docker push gotfix/redis:latest
   only:
