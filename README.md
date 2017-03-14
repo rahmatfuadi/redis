@@ -1,6 +1,6 @@
 [![build status](https://gotfix.com/docker/redis/badges/master/build.svg)](https://gotfix.com/docker/redis/commits/master)
 
-# phpbcom/docker-redis
+# gotfix/redis
 
 **NOTE**: This project was forked from sameersbn/docker-redis to maintain slightly more modern and less conservative (i.e., things will break) version of the docker image.
 
@@ -34,8 +34,8 @@ Redis is an open source, BSD licensed, advanced key-value cache and store. It is
 
 If you find this image useful here's how you can help:
 
-- Send a pull request with your awesome features and bug fixes
-- Help users resolve their [issues](../../issues?q=is%3Aopen+is%3Aissue).
+- Send a pull/merge request with your awesome features and bug fixes
+- Help users resolve their [issues](https://gotfix.com/docker/redis/issues).
 
 ## Issues
 
@@ -43,7 +43,7 @@ Before reporting your issue please try updating Docker to the latest version and
 
 SELinux users should try disabling SELinux using the command `setenforce 0` to see if it resolves the issue.
 
-If the above recommendations do not help then [report your issue](../../issues/new) along with the following information:
+If the above recommendations do not help then [report your issue](https://gotfix.com/docker/redis/issues) along with the following information:
 
 - Output of the `docker version` and `docker info` commands
 - The `docker run` command or `docker-compose.yml` used to start the image. Mask out the sensitive bits.
@@ -53,16 +53,16 @@ If the above recommendations do not help then [report your issue](../../issues/n
 
 ## Installation
 
-Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/phpbcom/docker-redis) and is the recommended method of installation.
+Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/gotfix/redis) and is the recommended method of installation.
 
 ```bash
-docker pull phpbcom/docker-redis:latest
+docker pull gotfix/redis:latest
 ```
 
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t phpbcom/docker-redis github.com/phpb-com/docker-redis
+docker build -t gotfix/redis gotfix.com/docker/redis
 ```
 
 ## Quickstart
@@ -73,7 +73,7 @@ Start Redis using:
 docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --volume /srv/docker/redis:/var/lib/redis \
-  phpbcom/docker-redis:latest
+  gotfix/redis:latest
 ```
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
@@ -86,7 +86,7 @@ You can customize the launch command of Redis server by specifying arguments to 
 docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --volume /srv/docker/redis:/var/lib/redis \
-  phpbcom/docker-redis:latest --appendonly yes
+  gotfix/redis:latest --appendonly yes
 ```
 
 Please refer to http://redis.io/topics/config for further details.
@@ -113,7 +113,7 @@ docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --env 'REDIS_PASSWORD=redispassword' \
   --volume /srv/docker/redis:/var/lib/redis \
-  phpbcom/docker-redis:latest
+  gotfix/redis:latest
 ```
 
 Clients connecting to the Redis server will now have to authenticate themselves with the password `redispassword`.
@@ -128,7 +128,7 @@ By default the Redis server logs are sent to the standard output. Using the [Com
 docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --volume /srv/docker/redis:/var/lib/redis \
-  phpbcom/docker-redis:latest --logfile /var/log/redis/redis-server.log
+  gotfix/redis:latest --logfile /var/log/redis/redis-server.log
 ```
 
 To access the Redis logs you can use `docker exec`. For example:
@@ -146,7 +146,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull phpbcom/docker-redis:latest
+  docker pull gotfix/redis:latest
   ```
 
   2. Stop the currently running image:
@@ -166,7 +166,7 @@ To upgrade to newer releases:
   ```bash
   docker run --name redis -d \
     [OPTIONS] \
-    phpbcom/docker-redis:latest
+    gotfix/redis:latest
   ```
 
 ## Shell Access

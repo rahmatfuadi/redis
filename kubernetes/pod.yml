@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: redis
-      image: phpbcom/docker-redis
+      image: gotfix/redis
       ports:
         - containerPort: 6379
           protocol: TCP

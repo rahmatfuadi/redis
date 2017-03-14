@@ -1,4 +1,4 @@
 all: build
 
 build:
-	@docker build --tag=phpbcom/docker-redis .
+	@docker build --tag=gotfix/redis .
