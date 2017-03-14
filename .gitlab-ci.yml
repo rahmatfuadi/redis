@@ -28,8 +28,6 @@ build:
 release:
   stage: release
   script:
-    - git tag -fa latest -m "Latest version"
-    - git push --tags --force
     - docker pull "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}"
     - docker tag "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}" "${DOCKER_HUB_BASE}"
     - docker tag "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}" "${DOCKER_HUB_BASE}:latest"
