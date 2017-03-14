@@ -9,6 +9,10 @@ stages:
  - build
  - release
 
+variables:
+  DOCKER_DRIVER: overlay
+  DOCKER_HUB_BASE: gotfix/redis
+
 before_script:
   - export IMAGE_TAG=$(echo -en $CI_BUILD_REF_NAME | tr -c '[:alnum:]_.-' '-')
   - docker login -u "gitlab-ci-token" -p "$CI_BUILD_TOKEN" $CI_REGISTRY
@@ -16,17 +20,17 @@ before_script:
 build:
   stage: build
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$IMAGE_TAG" .
-    - docker push "$CI_REGISTRY_IMAGE:$IMAGE_TAG"
+    - docker build --pull -t "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}" .
+    - docker push "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}"
 
 release:
   stage: release
   script:
-    - docker pull "$CI_REGISTRY_IMAGE:$IMAGE_TAG"
-    - docker tag "$CI_REGISTRY_IMAGE:$IMAGE_TAG" gotfix/redis
-    - docker tag "$CI_REGISTRY_IMAGE:$IMAGE_TAG" gotfix/redis:latest
-    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-    - docker push gotfix/redis
-    - docker push gotfix/redis:latest
+    - docker pull "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}"
+    - docker tag "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}" "${DOCKER_HUB_BASE}"
+    - docker tag "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}" "${DOCKER_HUB_BASE}:latest"
+    - docker login -u "${DOCKER_USER}" -p "${DOCKER_PASS}"
+    - docker push "${DOCKER_HUB_BASE}"
+    - docker push "${DOCKER_HUB_BASE}:latest"
   only:
     - master
