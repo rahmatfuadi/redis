@@ -1,4 +1,4 @@
-[![build status](https://gotfix.com/docker/redis/badges/master/build.svg)](https://gotfix.com/docker/redis/commits/master)
+[![build status](https://gotfix.com/docker/redis/badges/master/build.svg)](https://gotfix.com/docker/redis/commits/master) [![Docker Repository on Quay](https://quay.io/repository/gotfix/redis/status "Docker Repository on Quay")](https://quay.io/repository/gotfix/redis)
 
 # gotfix/redis
 
