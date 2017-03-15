@@ -29,6 +29,8 @@ tag-latest:
   image: docker:git
   stage: release
   script:
+    - git config --global user.email "ci@gotfix.com"
+    - git config --global user.name "CI Build"
     - git tag -fa latest
     - git push --force origin refs/tags/latest
   only:
