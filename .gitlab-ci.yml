@@ -24,6 +24,8 @@ build:
   script:
     - docker build --pull -t "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}" .
     - docker push "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}"
+  except:
+    - latest
 
 tag-latest:
   image: docker:git
@@ -35,8 +37,6 @@ tag-latest:
     - git push --force https://${ACCESS_USER}:${ACCESS_TOKEN}@gotfix.com/docker/redis.git refs/tags/latest
   only:
     - master
-  except:
-    - latest
 
 release:
   stage: release
