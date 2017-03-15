@@ -26,6 +26,7 @@ build:
     - docker push "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}"
 
 tag-latest:
+  image: docker:git
   stage: release
   script:
     - git tag -fa latest
