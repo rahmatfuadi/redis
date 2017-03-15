@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: redis
-      image: gotfix/redis
+      image: quay.io/gotfix/redis
       ports:
         - containerPort: 6379
           protocol: TCP

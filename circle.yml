@@ -8,6 +8,6 @@ dependencies:
 
 test:
   override:
-    - docker build -t gotfix/redis .
-    - docker run -d --name=redis -v /run/redis gotfix/redis; sleep 10
-    - docker run --volumes-from=redis gotfix/redis redis-cli -s /var/run/redis/redis.sock PING
+    - docker build -t quay.io/gotfix/redis .
+    - docker run -d --name=redis -v /run/redis quay.io/gotfix/redis; sleep 10
+    - docker run --volumes-from=redis quay.io/gotfix/redis redis-cli -s /var/run/redis/redis.sock PING
