@@ -1,8 +1,9 @@
-[![build status](https://gotfix.com/docker/redis/badges/master/build.svg)](https://gotfix.com/docker/redis/commits/master) [![Docker Repository on Quay](https://quay.io/repository/gotfix/redis/status "Docker Repository on Quay")](https://quay.io/repository/gotfix/redis)
+[![build status](https://gotfix.com/docker/redis/badges/master/build.svg)](https://gotfix.com/docker/redis/commits/master)
+[![Docker Repository on Quay](https://quay.io/repository/gotfix/redis/status "Docker Repository on Quay")](https://quay.io/repository/gotfix/redis)
 
-# quay.io/gotfix/redis
+# gotfix/redis
 
-**NOTE**: This project was forked from sameersbn/docker-redis to maintain slightly more modern and less conservative (i.e., things will break) version of the docker image.
+> Alternatively, the image is also available from [`quay.io/gotfix/redis`](https://quay.io/repository/gotfix/redis)
 
 ## Canonical source
 
@@ -56,13 +57,13 @@ If the above recommendations do not help then [report your issue](https://gotfix
 Automated builds of the image are available on [Quay.io](https://quay.io/repository/gotfix/redis) and [Dockerhub](https://hub.docker.com/r/gotfix/redis) and is the recommended method of installation.
 
 ```bash
-docker pull quay.io/gotfix/redis:latest
+docker pull gotfix/redis:latest
 ```
 
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t quay.io/gotfix/redis gotfix.com/docker/redis
+docker build -t gotfix/redis gotfix.com/docker/redis
 ```
 
 ## Quickstart
@@ -73,7 +74,7 @@ Start Redis using:
 docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --volume /srv/docker/redis:/var/lib/redis \
-  quay.io/gotfix/redis:latest
+  gotfix/redis:latest
 ```
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
@@ -86,7 +87,7 @@ You can customize the launch command of Redis server by specifying arguments to 
 docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --volume /srv/docker/redis:/var/lib/redis \
-  quay.io/gotfix/redis:latest --appendonly yes
+  gotfix/redis:latest --appendonly yes
 ```
 
 Please refer to http://redis.io/topics/config for further details.
@@ -113,7 +114,7 @@ docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --env 'REDIS_PASSWORD=redispassword' \
   --volume /srv/docker/redis:/var/lib/redis \
-  quay.io/gotfix/redis:latest
+  gotfix/redis:latest
 ```
 
 Clients connecting to the Redis server will now have to authenticate themselves with the password `redispassword`.
@@ -128,7 +129,7 @@ By default the Redis server logs are sent to the standard output. Using the [Com
 docker run --name redis -d --restart=always \
   --publish 6379:6379 \
   --volume /srv/docker/redis:/var/lib/redis \
-  quay.io/gotfix/redis:latest --logfile /var/log/redis/redis-server.log
+  gotfix/redis:latest --logfile /var/log/redis/redis-server.log
 ```
 
 To access the Redis logs you can use `docker exec`. For example:
@@ -146,7 +147,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull quay.io/gotfix/redis:latest
+  docker pull gotfix/redis:latest
   ```
 
   2. Stop the currently running image:
@@ -166,7 +167,7 @@ To upgrade to newer releases:
   ```bash
   docker run --name redis -d \
     [OPTIONS] \
-    quay.io/gotfix/redis:latest
+    gotfix/redis:latest
   ```
 
 ## Shell Access
@@ -176,3 +177,7 @@ For debugging and maintenance purposes you may want access the containers shell.
 ```bash
 docker exec -it redis bash
 ```
+
+# Other
+
+> This project was forked from sameersbn/docker-redis
