@@ -1,5 +1,5 @@
 Redis:
-  image: quay.io/gotfix/redis:latest
+  image: gotfix/redis:latest
   ports:
     - "6379:6379"
   volumes:
