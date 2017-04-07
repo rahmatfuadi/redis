@@ -16,14 +16,26 @@ variables:
   GITHUB_REPO_URL: https://phpb-com:${GITHUB_TOKEN}@github.com/gotfix/redis.git
 
 before_script:
+  - export VCS_REF=${CI_COMMIT_SHA:0:7}
+  - export VCS_BRANCH=${CI_COMMIT_REF_NAME}
   - export IMAGE_TAG=$(echo -en $CI_BUILD_REF_NAME | tr -c '[:alnum:]_.-' '-')
-  - docker login -u "gitlab-ci-token" -p "$CI_BUILD_TOKEN" $CI_REGISTRY
+  - export IMAGE_TAG_SHA=${VCS_REF}
+  - export REGISTRY_IMAGE_BASE=${DOCKER_HUB_BASE}
+  - export REGISTRY_IMAGE="${REGISTRY_IMAGE_BASE}:${IMAGE_TAG_SHA}"
+  - docker login -u "${DOCKER_USER}" -p "${DOCKER_PASS}"
 
 build:
   stage: build
   script:
-    - docker build --pull -t "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}" .
-    - docker push "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}"
+    - docker build
+        --build-arg=http_proxy=${HTTP_PROXY}
+        --build-arg=HTTP_PROXY=${HTTP_PROXY}
+        --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+        --build-arg VCS_REF=${VCS_REF}
+        --build-arg VCS_BRANCH=${VCS_BRANCH}
+        --build-arg VERSION=$(cat VERSION)
+        --pull -t "${REGISTRY_IMAGE}" .
+    - docker push "${REGISTRY_IMAGE}"
   except:
     - latest
 
@@ -41,12 +53,13 @@ tag-latest:
 release:
   stage: release
   script:
-    - docker pull "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}"
-    - docker tag "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}" "${DOCKER_HUB_BASE}"
-    - docker tag "${CI_REGISTRY_IMAGE}:${IMAGE_TAG}" "${DOCKER_HUB_BASE}:latest"
-    - docker login -u "${DOCKER_USER}" -p "${DOCKER_PASS}"
-    - docker push "${DOCKER_HUB_BASE}"
-    - docker push "${DOCKER_HUB_BASE}:latest"
+    - docker pull "${REGISTRY_IMAGE}"
+    - docker tag "${REGISTRY_IMAGE}" "${REGISTRY_IMAGE_BASE}"
+    - docker tag "${REGISTRY_IMAGE}" "${REGISTRY_IMAGE_BASE}:${IMAGE_TAG}"
+    - docker tag "${REGISTRY_IMAGE}" "${REGISTRY_IMAGE_BASE}:latest"
+    - docker push "${REGISTRY_IMAGE_BASE}"
+    - docker push "${REGISTRY_IMAGE_BASE}:${IMAGE_TAG}"
+    - docker push "${REGISTRY_IMAGE_BASE}:latest"
   only:
     - master
 
@@ -58,5 +71,3 @@ github_mirror:
     - git clone -q --mirror "${CI_BUILD_REPO}"
     - cd "${CI_PROJECT_NAME}.git"
     - git push -q --mirror "${GITHUB_REPO_URL}"
-  except:
-    - latest
