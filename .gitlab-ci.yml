@@ -13,7 +13,7 @@ stages:
 variables:
   DOCKER_DRIVER: overlay
   DOCKER_HUB_BASE: gotfix/redis
-  GITHUB_REPO_URL: https://phpb-com:${GITHUB_TOKEN}@github.com/phpb-com/docker-redis.git
+  GITHUB_REPO_URL: https://phpb-com:${GITHUB_TOKEN}@github.com/gotfix/redis.git
 
 before_script:
   - export IMAGE_TAG=$(echo -en $CI_BUILD_REF_NAME | tr -c '[:alnum:]_.-' '-')
