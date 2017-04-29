@@ -1,5 +1,8 @@
 [![build status](https://gotfix.com/docker/redis/badges/master/build.svg)](https://gotfix.com/docker/redis/commits/master)
 [![Docker Repository on Quay](https://quay.io/repository/gotfix/redis/status "Docker Repository on Quay")](https://quay.io/repository/gotfix/redis)
+[![](https://images.microbadger.com/badges/image/gotfix/redis.svg)](https://microbadger.com/images/gotfix/redis "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/gotfix/redis.svg)](https://microbadger.com/images/gotfix/redis "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/license/gotfix/redis.svg)](https://microbadger.com/images/gotfix/redis "Get your own license badge on microbadger.com")
 
 # gotfix/redis
 
