@@ -22,8 +22,7 @@ LABEL org.label-schema.schema-version="1.0" \
       com.gotfix.docker.dockerfile="/Dockerfile"
 
 ENV REDIS_USER=redis \
-    REDIS_DATA_DIR=/data \
-    REDIS_LOG_DIR=/var/log/redis
+    REDIS_DATA_DIR=/var/lib/redis
 
 COPY entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
