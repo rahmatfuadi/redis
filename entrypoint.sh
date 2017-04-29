@@ -3,6 +3,12 @@ set -e
 
 REDIS_PASSWORD=${REDIS_PASSWORD:-}
 
+create_log_dir() {
+  mkdir -p ${REDIS_LOG_DIR}
+  chmod -R 0755 ${REDIS_LOG_DIR}
+  chown -R ${REDIS_USER}:${REDIS_USER} ${REDIS_LOG_DIR}
+}
+
 create_data_dir() {
   mkdir -p ${REDIS_DATA_DIR}
   chmod -R 0755 ${REDIS_DATA_DIR}
@@ -13,6 +19,7 @@ chown_config() {
   chown ${REDIS_USER}:${REDIS_USER} /etc/redis.conf
 }
 
+create_log_dir
 create_data_dir
 chown_config
 

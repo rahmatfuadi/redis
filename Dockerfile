@@ -22,13 +22,14 @@ LABEL org.label-schema.schema-version="1.0" \
       com.gotfix.docker.dockerfile="/Dockerfile"
 
 ENV REDIS_USER=redis \
-    REDIS_DATA_DIR=/var/lib/redis
+    REDIS_DATA_DIR=/var/lib/redis \
+    REDIS_LOG_DIR=/var/log/redis
 
 COPY entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 COPY redis.conf /etc/redis.conf
 RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
 
 EXPOSE 6379/tcp
-VOLUME ["${REDIS_DATA_DIR}"]
+VOLUME ["${REDIS_DATA_DIR}", "${REDIS_LOG_DIR}"]
 WORKDIR ${REDIS_DATA_DIR}
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

@@ -29,6 +29,8 @@ The canonical source of the repository is [hosted on gotfix.com](https://gotfix.
 
 `Dockerfile` to create a [Docker](https://www.docker.com/) container image for [Redis](http://redis.io/).
 
+> This image is base on redis alpine docker image and is extremely small.
+
 Redis is an open source, BSD licensed, advanced key-value cache and store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets, sorted sets, bitmaps and hyperloglogs.
 
 ## Contributing
@@ -175,7 +177,7 @@ To upgrade to newer releases:
 For debugging and maintenance purposes you may want access the containers shell. If you are using Docker version `1.3.0` or higher you can access a running containers shell by starting `bash` using `docker exec`:
 
 ```bash
-docker exec -it redis bash
+docker exec -it redis /bin/sh
 ```
 
 # Other
