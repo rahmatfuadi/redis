@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
 REDIS_PASSWORD=${REDIS_PASSWORD:-}
@@ -47,8 +47,8 @@ fi
 # default behaviour is to launch redis-server
 if [[ -z ${1} ]]; then
   echo "Starting redis-server..."
-  exec start-stop-daemon --start --chuid ${REDIS_USER}:${REDIS_USER} --exec $(which redis-server) -- \
-    /etc/redis/redis.conf ${REDIS_PASSWORD:+--requirepass $REDIS_PASSWORD} ${EXTRA_ARGS}
+  exec su-exec ${REDIS_USER}:${REDIS_USER} $(which redis-server) -- \
+       ${REDIS_PASSWORD:+--requirepass $REDIS_PASSWORD} ${EXTRA_ARGS}
 else
   exec "$@"
 fi
