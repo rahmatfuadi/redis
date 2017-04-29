@@ -21,7 +21,7 @@ fi
 if [[ -z ${1} ]]; then
   echo "Starting redis-server..."
   exec su-exec ${REDIS_USER}:${REDIS_USER} $(which redis-server) -- \
-       --appendonly yes ${REDIS_PASSWORD:+--requirepass $REDIS_PASSWORD} ${EXTRA_ARGS}
+       /etc/redis.conf ${REDIS_PASSWORD:+--requirepass $REDIS_PASSWORD} ${EXTRA_ARGS}
 else
   exec "$@"
 fi

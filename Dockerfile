@@ -25,6 +25,7 @@ ENV REDIS_USER=redis \
     REDIS_DATA_DIR=/var/lib/redis
 
 COPY entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY redis.conf /etc/redis.conf
 RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
 
 EXPOSE 6379/tcp
