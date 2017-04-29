@@ -28,6 +28,6 @@ COPY entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
 
 EXPOSE 6379/tcp
-VOLUME ["${REDIS_DATA_DIR}", "${REDIS_LOG_DIR}"]
+VOLUME ["${REDIS_DATA_DIR}"]
 WORKDIR ${REDIS_DATA_DIR}
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
